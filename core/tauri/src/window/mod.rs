@@ -886,7 +886,9 @@ impl<R: Runtime> raw_window_handle::HasWindowHandle for Window<R> {
 }
 
 unsafe impl<R: Runtime> raw_window_handle::HasRawDisplayHandle for Window<R> {
-  fn raw_display_handle(&self) -> raw_window_handle::RawDisplayHandle {
+  fn raw_display_handle(
+    &self,
+  ) -> Result<raw_window_handle::RawDisplayHandle, raw_window_handle::HandleError> {
     self.app_handle.raw_display_handle()
   }
 }
